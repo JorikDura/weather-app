@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Actions\Api\V1\Weather\ShowWeatherApiAction;
+use App\Interfaces\Actions\ShowWeatherAction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\ServiceProvider;
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(ShowWeatherAction::class, ShowWeatherApiAction::class);
     }
 
     /**

@@ -8,12 +8,16 @@ use App\DTOs\WeatherDTO;
 use App\Enums\ApiEndPoint;
 use App\Enums\TemperatureType;
 use App\Http\Requests\Api\V1\ShowWeatherRequest;
+use App\Interfaces\Actions\ShowWeatherAction;
 use App\Jobs\HistoryJob;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
 
-final readonly class ShowWeatherAction
+/**
+ * Realization of www.weatherapi.com
+ */
+final readonly class ShowWeatherApiAction implements ShowWeatherAction
 {
     private const int ERROR_NO_API_KEY_PROVIDED = 1002;
     private const int ERROR_NO_LOCATION_FOUND = 1006;
